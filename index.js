@@ -4,8 +4,18 @@ require('dotenv/config')
 
 const PORT = process.env.PORT
 
+let data = { name: 'Some' }
+
+app.use(express.json())
+
 app.get('/', (req, res) => {
-    res.send('HI FROM THE SERVER!')
+    res.json(data)
+})
+
+app.post('/', (req, res) => {
+    const newProduct = req.body
+    console.log(newProduct)
+    res.send('got it')
 })
 
 app.listen(PORT, () => {
